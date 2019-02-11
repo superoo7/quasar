@@ -423,7 +423,7 @@ export default Vue.extend({
               staticClass: 'q-time__container-child fit overflow-hidden'
             }, [
               h('div', {
-                staticClass: 'q-time__clock cursor-pointer',
+                staticClass: 'q-time__clock cursor-pointer non-selectable',
                 on: {
                   click: this.__click
                 },

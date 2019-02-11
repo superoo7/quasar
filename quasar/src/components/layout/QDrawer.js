@@ -504,7 +504,9 @@ export default Vue.extend({
         ref: 'backdrop',
         staticClass: 'fullscreen q-drawer__backdrop q-layout__section--animate',
         class: this.backdropClass,
-        on: { click: this.hide },
+        on: {
+          click: this.hide
+        },
         directives: [{
           name: 'touch-pan',
           modifiers: {

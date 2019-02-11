@@ -168,22 +168,21 @@ export default {
             : distX < distY
         }
 
+        if (!ctx.event.abort) {
+          document.documentElement.style.cursor = 'grabbing'
+          document.body.classList.add('no-pointer-events')
+          document.body.classList.add('non-selectable')
+        }
+
         ctx.move(evt)
       },
 
       end (evt, mouseEvent) {
-        el.classList.remove('q-touch')
+        document.documentElement.style.cursor = ''
+        document.body.classList.remove('no-pointer-events')
+        document.body.classList.remove('non-selectable')
 
-        if (ctx.event.abort || !ctx.event.detected) {
-          return
-        }
-
-        if (ctx.event.isFirst) {
-          console.log('first!')
-          if (mouseEvent !== true) {
-            // need to trigger a click event for touch action
-            el.dispatchEvent(new MouseEvent('click', Object.assign({}, evt)))
-          }
+        if (ctx.event.abort || !ctx.event.detected || ctx.event.isFirst) {
           return
         }
 
